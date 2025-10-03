@@ -1,6 +1,6 @@
 namespace RestaurangApp;
 
-class User
+class User : IUser
 {
 
     public string Username;
@@ -14,6 +14,10 @@ class User
 
     }
     
+    public bool TryLogin(string username, string password)
+    {
+        return username == Username && password == _password;
+    }
 
     public bool IsRole(Role role)
     {

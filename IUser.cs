@@ -7,6 +7,8 @@ interface IUser
 
     public Role GetRole();
 
+    public bool TryLogin(string username, string password);
+
 }
 
 enum Role
