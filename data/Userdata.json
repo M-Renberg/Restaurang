@@ -4,5 +4,20 @@
     "_password": "admin",
     "staffInfo": [],
     "Role": 1
+  },
+  {
+    "Username": "headcheftest",
+    "_password": "test",
+    "staffInfo": [
+      {
+        "Firstname": "headchef",
+        "Lastname": "test",
+        "Birthday": 1,
+        "Adress": "somewhere",
+        "Email": "test@email.com",
+        "PhoneNumber": 1
+      }
+    ],
+    "Role": 4
   }
 ]

@@ -24,7 +24,8 @@ while (running)
         Console.Clear();
         System.Console.WriteLine("Restaurang Management System:");
         System.Console.WriteLine(" ");
-        System.Console.WriteLine("1. Login");        
+        System.Console.WriteLine("1. Login");
+        System.Console.WriteLine("9. Quit program");
 
         string? inputLoginMenu = Console.ReadLine();
 
@@ -47,9 +48,7 @@ while (running)
                     }
                 }
                 break;
-            case"2":
-                User.AddUser(staffList);
-                fh.SaveUser(staffList);
+            case "2":
                 break;
             case "9":
                 running = false;
@@ -60,7 +59,7 @@ while (running)
         }
     }
 
-    
+
 
     else
     {
@@ -68,6 +67,11 @@ while (running)
         {
             Console.Clear();
             System.Console.WriteLine($"You're logged in as {activeUser.Username}");
+            System.Console.WriteLine(" ");
+            System.Console.WriteLine("1. ");
+            System.Console.WriteLine("2. Add a new staff member");
+            System.Console.WriteLine("8. logout");
+            System.Console.WriteLine("quit. Program shut down");
             string? menuInput = Console.ReadLine();
 
             switch (menuInput)
@@ -75,6 +79,8 @@ while (running)
                 case "1":
                     break;
                 case "2":
+                    User.AddUser(staffList);
+                    fh.SaveUser(staffList);
                     break;
                 case "8":
                     System.Console.WriteLine("You have now logged out");
@@ -87,6 +93,35 @@ while (running)
                     running = false;
                     break;
             }
+        }
+        else if (activeUser.IsRole(Role.HeadChef))
+        {
+            Console.Clear();
+            System.Console.WriteLine($"You're logged in as {activeUser.Username}");
+
+        }
+        else if (activeUser.IsRole(Role.HeadWaiter))
+        {
+            Console.Clear();
+            System.Console.WriteLine($"You're logged in as {activeUser.Username}");
+
+        }
+        else if (activeUser.IsRole(Role.Chef))
+        {
+            Console.Clear();
+            System.Console.WriteLine($"You're logged in as {activeUser.Username}");
+
+        }
+        else if (activeUser.IsRole(Role.Waiter))
+        {
+            Console.Clear();
+            System.Console.WriteLine($"You're logged in as {activeUser.Username}");
+
+        }
+        else
+        {
+            System.Console.WriteLine("Something went wrong.");
+            Console.ReadLine();
         }
 
     }

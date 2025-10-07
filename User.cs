@@ -3,8 +3,8 @@ namespace RestaurangApp;
 class User : IUser
 {
 
-    public string Username;
-    public string _password;
+    public string? Username;
+    public string? _password;
     public List<StaffContactInfo> staffInfo = new List<StaffContactInfo>();
     public Role Role;
 
@@ -44,10 +44,12 @@ class User : IUser
         string? NuLNameInput = Console.ReadLine();
         System.Console.WriteLine("Social security number: ");
         System.Console.WriteLine("Writen as YYMMDD");
-        System.Console.WriteLine(" ");
         int NuBirthdayInput = int.Parse(Console.ReadLine()!);
+        System.Console.WriteLine("Adress:");
         string? NuAdressInput = Console.ReadLine();
+        System.Console.WriteLine("Email:");
         string? NuEmailInput = Console.ReadLine();
+        System.Console.WriteLine("Phone number");
         int NuPhoneNrInput = int.Parse(Console.ReadLine()!);
 
         string NuUsername = NuFNameInput + NuLNameInput;

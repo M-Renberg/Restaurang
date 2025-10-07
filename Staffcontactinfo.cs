@@ -20,6 +20,11 @@ class StaffContactInfo
         PhoneNumber = phonenumber;
     }
 
+    public override string ToString()
+    {
+        return $"{Firstname} {Lastname} ({Birthday}) - {Email}, {PhoneNumber}";
+    }
+
 
 
 
