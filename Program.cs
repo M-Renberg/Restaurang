@@ -1,16 +1,17 @@
 ﻿using System.ComponentModel.Design;
 using RestaurangApp;
+using System.Diagnostics;
+using System.Runtime.Intrinsics.X86;
 
 FileHandler fh = new FileHandler();
 
 List<User> staffList = new List<User>();
 
-//test admin
-User Admin = new User("admin", "admin");
-staffList.Add(Admin);
-Admin.GetRole();
-
 fh.LoadUser(staffList);
+//test admin
+//User Admin = new User("admin", "admin", Role.Admin);
+//staffList.Add(Admin);
+
 
 User? activeUser = null; 
 bool running = true;
@@ -20,8 +21,10 @@ while (running)
 
     if (activeUser == null)
     {
+        Console.Clear();
         System.Console.WriteLine("Restaurang Management System:");
         System.Console.WriteLine(" ");
+        System.Console.WriteLine("1. Login");        
 
         string? inputLoginMenu = Console.ReadLine();
 
@@ -35,14 +38,21 @@ while (running)
 
                 foreach (User user in staffList)
                 {
-                    if (user.TryLogin(loginUsername, loginPassword))
+                    if (user.TryLogin(loginUsername!, loginPassword!))
                     {
                         activeUser = user;
+                        // System.Console.WriteLine($"du loggade in som {activeUser.Username} din roll är {activeUser.Role}");
+                        // Console.ReadLine();
                         break;
                     }
                 }
-
-
+                break;
+            case"2":
+                User.AddUser(staffList);
+                fh.SaveUser(staffList);
+                break;
+            case "9":
+                running = false;
                 break;
             default:
                 System.Console.WriteLine("Wrong input. Please try again");
@@ -50,10 +60,35 @@ while (running)
         }
     }
 
+    
+
     else
     {
-        
-        
+        if (activeUser.IsRole(Role.Admin))
+        {
+            Console.Clear();
+            System.Console.WriteLine($"You're logged in as {activeUser.Username}");
+            string? menuInput = Console.ReadLine();
+
+            switch (menuInput)
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "8":
+                    System.Console.WriteLine("You have now logged out");
+                    Console.ReadLine();
+                    fh.SaveUser(staffList);
+                    activeUser = null;
+                    break;
+                case "quit":
+                    fh.SaveUser(staffList);
+                    running = false;
+                    break;
+            }
+        }
+
     }
 
 }
