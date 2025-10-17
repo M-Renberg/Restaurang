@@ -28,11 +28,6 @@ class User : IUser
         return Role == role;
     }
 
-    // public Role GetRole()
-    // {
-    //     return Role.None;
-    // }
-
     static public void AddUser(List<User> staffList)
     {
 

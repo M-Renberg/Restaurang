@@ -7,6 +7,8 @@ FileHandler fh = new FileHandler();
 
 List<User> staffList = new List<User>();
 
+List<MenuItems> menu_List = new();
+
 fh.LoadUser(staffList);
 //test admin
 //User Admin = new User("admin", "admin", Role.Admin);
