@@ -226,11 +226,90 @@ class Menu
                         {
                             System.Console.WriteLine("Something went wrong");
                         }
-                    break;
+                        break;
+                    default:
+                        System.Console.WriteLine("Something went wrong");
+                        Console.ReadLine();
+                        break;
                 }
 
                 break;
             case "2":
+
+                System.Console.WriteLine("Remove Items from the Menu:");
+                System.Console.WriteLine("[1] Food.");
+                System.Console.WriteLine("[2] Drinks.");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                    for(int i = 0; i < menu_List.Count; i++)
+                        {
+                            if (menu_List[i].ItemType == MenuItems.TypeOfItem.Appetizers)
+                            {
+                                System.Console.WriteLine($"Item number {menu_List[i]}, Name: {menu_List[i].TitleName}, Description: {menu_List[i].ItemDescription}");
+                            }
+                            if (menu_List[i].ItemType == MenuItems.TypeOfItem.Entrees)
+                            {
+                                System.Console.WriteLine($"Item number {menu_List[i]}, Name: {menu_List[i].TitleName}, Description: {menu_List[i].ItemDescription}");
+                            }
+                            if (menu_List[i].ItemType == MenuItems.TypeOfItem.Side_Dish)
+                            {
+                                System.Console.WriteLine($"Item number {menu_List[i]}, Name: {menu_List[i].TitleName}, Description: {menu_List[i].ItemDescription}");
+                            }
+                            if (menu_List[i].ItemType == MenuItems.TypeOfItem.Desserts)
+                            {
+                                System.Console.WriteLine($"Item number {menu_List[i]}, Name: {menu_List[i].TitleName}, Description: {menu_List[i].ItemDescription}");
+                            }
+                            if (menu_List[i].ItemType == MenuItems.TypeOfItem.Specials)
+                            {
+                                System.Console.WriteLine($"Item number {menu_List[i]}, Name: {menu_List[i].TitleName}, Description: {menu_List[i].ItemDescription}");
+                            }
+                            
+                            System.Console.WriteLine("Select the menu item you wish to delete:");
+                            System.Console.Write("Write the item number:");
+                            string? deleteInput = Console.ReadLine();
+                            if (int.TryParse(deleteInput, out int deleteInputint))
+                            {
+                                menu_List.Remove(menu_List[deleteInputint]);
+                                System.Console.WriteLine("The item has been removed");
+                            }
+                            else
+                            {
+                                System.Console.WriteLine("Something went wrong");
+                                Console.ReadLine();
+                                return;
+                            }
+                        }
+                        break;
+                    case "2":
+                        for(int i = 0; i < menu_List.Count; i++)
+                            {
+                            if (menu_List[i].ItemType == MenuItems.TypeOfItem.Beverages)
+                            {
+                                System.Console.WriteLine($"Item number {menu_List[i]}, Name: {menu_List[i].TitleName}, Description: {menu_List[i].ItemDescription}");
+                            }
+                            System.Console.WriteLine("Select the menu item you wish to delete:");
+                            System.Console.Write("Write the item number:");
+                            string? deleteInput = Console.ReadLine();
+                            if (int.TryParse(deleteInput, out int deleteInputint))
+                            {
+                                menu_List.Remove(menu_List[deleteInputint]);
+                                System.Console.WriteLine("The item has been removed");
+                            }
+                            else
+                            {
+                                System.Console.WriteLine("Something went wrong");
+                                Console.ReadLine();
+                                return;
+                            }
+                            }
+                        break;
+                    default:
+                        System.Console.WriteLine("Something went wrong");
+                        break;
+                }
+
                 break;
             case "3":
                 break;
